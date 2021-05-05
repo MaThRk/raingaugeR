@@ -17,5 +17,4 @@ make_voronoi = function(poly){
   r = list("voroni" = v, "centroids" = centroids)
 
   return(r)
-
 }
