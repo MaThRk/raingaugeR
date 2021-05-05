@@ -1,1 +1,7 @@
 depre
+.Rproj.user
+.Rhistory
+.Ruserdata
+*.Rdata
+*.png
+
