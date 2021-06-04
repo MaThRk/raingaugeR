@@ -5,7 +5,8 @@
 \title{Read the station rainfall data}
 \usage{
 read_rainfall(
-  station_data_path = "/mnt/CEPH_PROJECTS/Proslide/HourlyPrecData/Checked_HourlyRR"
+  station_data_path = "/mnt/CEPH_PROJECTS/Proslide/HourlyPrecData/Checked_HourlyRR",
+  only.names = FALSE
 )
 }
 \arguments{

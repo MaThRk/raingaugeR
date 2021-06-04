@@ -21,7 +21,8 @@
 #' @md
 
 read_rainfall = function(
-  station_data_path = "/mnt/CEPH_PROJECTS/Proslide/HourlyPrecData/Checked_HourlyRR"
+  station_data_path = "/mnt/CEPH_PROJECTS/Proslide/HourlyPrecData/Checked_HourlyRR",
+  only.names = FALSE
 ){
 
   # check if data-path exists
@@ -38,10 +39,21 @@ read_rainfall = function(
   # get the names
   station_names = gsub(".*HourlyRR\\/(.*).txt$", "\\1", stations_paths, perl = T)
 
+  if(only.names){
+    return(station_names)
+  }
+
   # read in the data into a list
   station_data = vector(mode = "list", length=length(station_names))
   for (i in seq_along(station_data)) {
+
+    # read the data
     d = read.table(stations_paths[[i]])
+
+    # print message
+    cat(paste0("Read (", i, "/", length(station_names), "): ", station_names[[i]]))
+    cat(paste0(", ", nrow(d), " lines\n"))
+
     # check_rainfall_data(d)
     names(d) = names_data
     # assumes that the data column is always the first column
