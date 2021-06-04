@@ -1,4 +1,4 @@
-# How to work with the data
+# Cleaning the names of the stations
 
 - The stationnames in the files are different from the station names in the excel file
 
@@ -42,6 +42,40 @@ setdiff(names_data, names_xl)
 20 Völs_am_Schlern 
 
 ```
-- One of the reasons is that there are
+- One of the reasons is that in the filesname there are, for good reasons, no spaces.
+
+- One we change underscores for spaces there are only 7 stations, extracted from the files, which have no corresponding station in the excel file
+
+```
+# clean the file names and introduce spaces breaks
+names_data_new = names_data %>%
+  mutate(name = gsub("_", " ", name))
+
+# perform again the set_diff
+setdiff(names_data_new, names_xl)
+```
+- Finally some manual renaming...
+
+```
+# do some manual renaming
+names_data_final = names_data_new %>% 
+  mutate(
+    name = str_replace(name, ".*Eisack.*", "Eisack - Sterzing"),
+    name = str_replace(name, ".*Antholz.*", "Antholz - Obertal"),
+    name = str_replace(name, ".*Eyrs.*", "Eyrs - Laas"),
+    name = str_replace(name, ".*Meran.*", "Meran - Gratsch"),
+    name = str_replace(name, ".*Oberplanitzing.*", "Oberplanitzing - Kaltern"),
+    name = str_replace(name, ".*Seiser Alm.*", "Seiser Alm - Zallinger"),
+    name = str_replace(name, ".*St.Walburg.*", "St.Walburg - Zoggler Stausee")
+  )
+
+# perform again the set_diff
+setdiff(names_data_final, names_xl)
+
+#
+# A tibble: 0 x 1
+# … with 1 variable: name <chr>
+
+```
 
 

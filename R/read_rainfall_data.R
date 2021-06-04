@@ -41,6 +41,8 @@ read_rainfall = function(station_data_path = "/mnt/CEPH_PROJECTS/Proslide/Hourly
 
   if (only.names) {
     return(station_names)
+    correct_names = clean_station_data_names(station_names)
+    return(correct_names)
   }
 
   # read in the data into a list
