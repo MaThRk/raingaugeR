@@ -1,6 +1,6 @@
 #' Make voroni polygons
 #'
-#'
+#' @importFrom sf st_combine st_voronoi st_collection_extra st_centroid
 #'
 #'
 #'
