@@ -37,9 +37,11 @@ Hintermartell.txt
 ...
 ```
 
+# How to work with the data
+
 1. Get a list of all the stations
 
-- You can get a list of all the stations or via 
+- You can get a list of all the stations or via 2 ways as each stationname is in the filename for the data, but also in the excel-sheet with the additional information
 
 
 

@@ -6,6 +6,7 @@
 \usage{
 read_rainfall(
   station_data_path = "/mnt/CEPH_PROJECTS/Proslide/HourlyPrecData/Checked_HourlyRR",
+  station = NULL,
   only.names = FALSE
 )
 }
