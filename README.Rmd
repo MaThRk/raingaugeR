@@ -1,0 +1,15 @@
+# RaingaugeR
+
+> Functions to work with Wiski raingauge-data
+
+
+```{r}
+a = 1
+b = 2
+(a+b)
+```
+
+
+
+
+
