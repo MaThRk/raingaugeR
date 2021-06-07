@@ -1,7 +1,7 @@
-#' Select station for point in space
+#' Select station by distance
 #'
 #' For a given location select the n nearest stations
-
+#' @export
 
 get_station_by_distance = function(position, station_sf){
 

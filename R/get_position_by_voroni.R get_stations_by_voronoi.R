@@ -1,7 +1,7 @@
-#' Get Position by Voronoi
+#' Get Stations by Voronoi
 #'
 #'
-#'
+#'@export
 
 get_stations_by_voronoi = function(position, station_sf) {
 

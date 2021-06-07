@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_stations_by_distance.R
 \name{get_station_by_distance}
 \alias{get_station_by_distance}
-\title{Select station for point in space}
+\title{Select station by distance}
 \usage{
 get_station_by_distance(position, station_sf)
 }
