@@ -2,9 +2,14 @@
 % Please edit documentation in R/get_events_one_station.R
 \name{get_events_one_station}
 \alias{get_events_one_station}
-\title{Get the rainfall events}
+\title{Get rainfall events for one station}
 \usage{
-get_events_one_station(station = NULL, n_dry = NULL, min_thresh = NULL)
+get_events_one_station(
+  station = NULL,
+  n_dry = NULL,
+  min_thresh = NULL,
+  method = 1
+)
 }
 \arguments{
 \item{station}{a dataframe containing the rainfall measurements for one station}
@@ -15,5 +20,5 @@ get_events_one_station(station = NULL, n_dry = NULL, min_thresh = NULL)
 not due to the insensitivity of the station or some other influences?}
 }
 \description{
-For one station get all the rainfall-events that occured in the recording
+For one station get all the rainfall-events that occurred in the recording
 }

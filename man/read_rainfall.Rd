@@ -13,6 +13,11 @@ read_rainfall(
 \arguments{
 \item{station_data_path}{Path to the directory containing the \code{txt} files
 for the rainfall data from the WISKI database}
+
+\item{station}{If you want only the data for one station}
+
+\item{only.names}{If TRUE, returns a dataframe with only the names from the stations.
+The two columns are the names from the file and the name matching the excel file.}
 }
 \value{
 A list. Each element is a datafame and contains the data for that station.

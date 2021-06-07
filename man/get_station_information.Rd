@@ -5,7 +5,8 @@
 \title{Get Raingauge Station information}
 \usage{
 get_station_information(
-  info_path = "/mnt/CEPH_PROJECTS/Proslide/SubDailyStations_WISKI.xlsx"
+  info_path = "/mnt/CEPH_PROJECTS/Proslide/SubDailyStations_WISKI.xlsx",
+  station = NULL
 )
 }
 \description{

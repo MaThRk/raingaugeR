@@ -3,9 +3,7 @@
 #' @importFrom sf st_combine st_voronoi st_collection_extract st_centroid
 #'
 #'
-#'
-#'
-#'
+#' @export
 
 make_voronoi = function(poly){
 

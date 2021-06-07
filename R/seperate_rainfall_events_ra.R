@@ -9,7 +9,8 @@ separate_events_ra = function(ra, min_thresh){
   i = 1
   while(i <= length(ra)) {
 
-    print(i)
+    print(paste0("i: ", i))
+
 
     if(is.na(ra[[i]])){
       events[[i]] = NA
@@ -27,9 +28,10 @@ separate_events_ra = function(ra, min_thresh){
       l = 1
       # go in the wet days
       for(j in i:length(ra)){
-        print(j)
+        print(paste0("j: ", j))
 
-        if(ra[[j]] >= min_thresh & !is.na(ra[[i]])){
+        if(ra[[j]] >= min_thresh & !is.na(ra[[j]])){
+
           events[[j]] = event_counter
           if(j == length(ra)){
             return(events)

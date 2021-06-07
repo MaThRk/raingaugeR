@@ -36,4 +36,50 @@ Grasstein.txt
 Hintermartell.txt
 ...
 ```
+## Get the station-names
+
+- You can get the station-names from the files. This will return a dataframe with two columns. One being the actual name from the file, the other is the name of the station in the excel file
+
+```
+# get the station naames of the files
+station_names_files = read_rainfall(only.names = T)
+```
+
+- We can also get the station-names from the excel file by calling:
+
+```
+station_names_xl = get_station_information()[["name"]]
+```
+
+This will return the same names as in the second column of the returned dataframe of `station_names_files`
+
+
+## Get the rainfall for one station
+
+- If you only are interested in the rainfall for one station you can use the function `read_rainfall` and specify the name of the station. It must only match more or less. If it does not match 100 % it will provide a suggestion
+
+```
+station = "bozn"
+rain = read_rainfall(station=station)
+# Did you meant: Bozen[Yy|Nn] 
+head(rain)
+
+        date     hour precip n_measure
+1 1981-01-03 01:00:00     NA        12
+2 1981-01-03 02:00:00     NA        12
+3 1981-01-03 03:00:00     NA        12
+4 1981-01-03 04:00:00     NA        12
+5 1981-01-03 05:00:00     NA        12
+6 1981-01-03 06:00:00     NA        12
+
+```
+
+
+
+
+
+
+
+
+
 

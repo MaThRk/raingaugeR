@@ -1,6 +1,6 @@
-#' Get the rainfall events
+#' Get rainfall events for one station
 #'
-#' For one station get all the rainfall-events that occured in the recording
+#' For one station get all the rainfall-events that occurred in the recording
 #'
 #' @param station a dataframe containing the rainfall measurements for one station
 #' @param n_dry the time with no rain that splits two consecutive rainfall events.
@@ -9,7 +9,8 @@
 
 get_events_one_station = function(station = NULL,
                                   n_dry = NULL, # set all arguments to null to enforce thinking about
-                                  min_thresh = NULL){ # them each time I call the function
+                                  min_thresh = NULL,
+                                  method=1){ # them each time I call the function
 
 
   # cehck input
@@ -29,19 +30,23 @@ get_events_one_station = function(station = NULL,
   # get the rainfall
   precip = station$precip
 
-  # get the rainfall events based on fixed intervals
-  events = get_events(precip, n_dry, min_thresh)
+  # get the events
+  if(method == 1){
+    # get the rainfall events based on fixed intervals
+    events = get_events(precip, n_dry, min_thresh)
+    # put them in the dataframe
+    station[["events"]] = events
 
-  # get the events with a rolling average (returns a dataframe witht the rolling average and the events)
-  events_ra = get_events_ra(precip, 24, min_thresh)
-
-  # put them in the dataframe
-  station[["events"]] = events
+  }else if(method == 2){
+    # get the events with a rolling average (returns a dataframe witht the rolling average and the events)
+    events_ra = get_events_ra(precip, 24, min_thresh)
+    # put them in the dataframe
+    station[["events_ra"]] = events_ra
+  }
 
   station = cbind(station, events_ra)
 
   # return the dataframe
   return(station)
-
 
 }
