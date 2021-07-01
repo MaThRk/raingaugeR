@@ -2,8 +2,6 @@
 #'
 #' @importFrom sf st_distance
 #'
-#'
-#' For a given location select the n nearest stations
 #' @export
 
 get_station_by_distance = function(position, station_sf, n = 3) {
