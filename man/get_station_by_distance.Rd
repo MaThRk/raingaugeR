@@ -7,5 +7,5 @@
 get_station_by_distance(position, station_sf)
 }
 \description{
-For a given location select the n nearest stations
+Select station by distance
 }
