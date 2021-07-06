@@ -27,7 +27,9 @@
 
 read_rainfall = function(station = NULL,
                          station_data_path = "/mnt/CEPH_PROJECTS/Proslide/HourlyPrecData/Checked_HourlyRR",
-                         only.names = FALSE) {
+                         only.names = FALSE,
+                         start_date = NULL,
+                         end_date = NULL) {
 
   # check if data-path exists
   if (!dir.exists(station_data_path)) {
@@ -124,7 +126,10 @@ read_rainfall = function(station = NULL,
         # assumes that the data column is always the first column
         df[, 1] = as.Date(df[, 1])
 
-        # put the data in the station-list
+        # slice the data based on the input dates
+        df = slice_rain(df, start_date = start_date,
+                        end_date = end_date)
+
 
         # get the additional information from the excel file
         station_name_excel = correct_names[[idx]]
@@ -146,7 +151,9 @@ read_rainfall = function(station = NULL,
         # assumes that the data column is always the first column
         df[, 1] = as.Date(df[, 1])
 
-        # put the data in the station-list
+        # slice the data based on the input dates
+        df = slice_rain(df, start_date = start_date[[i]],
+                        end_date = end_date[[i]])
 
         # get the additional information from the excel file
         station_name_excel = correct_names[[idx]]
