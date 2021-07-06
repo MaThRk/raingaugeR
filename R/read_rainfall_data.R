@@ -25,8 +25,8 @@
 #' 6 2002-10-29 06:00:00      0        12
 #' @md
 
-read_rainfall = function(station_data_path = "/mnt/CEPH_PROJECTS/Proslide/HourlyPrecData/Checked_HourlyRR",
-                         station = NULL,
+read_rainfall = function(station = NULL,
+                         station_data_path = "/mnt/CEPH_PROJECTS/Proslide/HourlyPrecData/Checked_HourlyRR",
                          only.names = FALSE) {
 
   # check if data-path exists
@@ -129,14 +129,14 @@ read_rainfall = function(station_data_path = "/mnt/CEPH_PROJECTS/Proslide/Hourly
         df[, 1] = as.Date(df[, 1])
 
         # put the data in the station-list
-        station_list[[1]] = df
 
         # get the additional information from the excel file
         station_name_excel = correct_names[[idx]]
         add_info = get_station_information(stat = station_name_excel)
-        station_list[[2]] = add_info
+        add_info[["data"]] = list(data = df)
 
         all_stations[[i]]  = station_list
+
         i = i + 1
 
       }else{
@@ -151,14 +151,13 @@ read_rainfall = function(station_data_path = "/mnt/CEPH_PROJECTS/Proslide/Hourly
         df[, 1] = as.Date(df[, 1])
 
         # put the data in the station-list
-        station_list[[1]] = df
 
         # get the additional information from the excel file
         station_name_excel = correct_names[[idx]]
         add_info = get_station_information(stat = station_name_excel)
-        station_list[[2]] = add_info
+        add_info[["data"]] = list(data = df)
 
-        all_stations[[i]]  = station_list
+        all_stations[[i]]  = add_info
         i = i + 1
       }
     }
