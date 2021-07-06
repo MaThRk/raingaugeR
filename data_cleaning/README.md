@@ -4,6 +4,8 @@
 
 - There are 20 stations where the names do not allow a direct join
 
+- The file names (the actual data) contain underscores while the names in the excel file contain dashes and white spaces
+
 
 ```
 

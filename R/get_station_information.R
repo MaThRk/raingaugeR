@@ -24,6 +24,10 @@ get_station_information = function(info_path = "/mnt/CEPH_PROJECTS/Proslide/SubD
 
   df = setNames(df, names)
 
+  # get the names from the files for each station
+  station_names_files = read_rainfall(only.names = T)
+  df = merge(df, station_names_files, by.x="name", by.y="names_matching_excel")
+
   if (is.null(station)) {
 
     # turn the dataframe into an object of class sf

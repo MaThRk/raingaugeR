@@ -28,6 +28,7 @@
 read_rainfall = function(station_data_path = "/mnt/CEPH_PROJECTS/Proslide/HourlyPrecData/Checked_HourlyRR",
                          station = NULL,
                          only.names = FALSE) {
+
   # check if data-path exists
   if (!dir.exists(station_data_path)) {
     stop("The path to the directory of the data does no exist...")
@@ -111,12 +112,13 @@ read_rainfall = function(station_data_path = "/mnt/CEPH_PROJECTS/Proslide/Hourly
 
 
       if (!stat %in% station_names) {
+
         warning("The station you want could not be found in the list of station names")
         # which string is most similar?
         sim = stringdist::stringsim(stat, station_names)
         idx = which.max(sim)
 
-        idx = which(grepl(stat, station_names))
+        # idx = which(grepl(stat, station_names))
         # stat = station_names[[idx]]
 
         # read this one station
