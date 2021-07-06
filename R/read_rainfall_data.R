@@ -107,10 +107,6 @@ read_rainfall = function(station = NULL,
 
     for (stat in station) {
 
-      station_list = vector("list", length = 2) #uhhh, not initialized with a length
-      station_list = setNames(station_list, c("data", "info"))
-
-
       if (!stat %in% station_names) {
 
         warning("The station you want could not be found in the list of station names")
