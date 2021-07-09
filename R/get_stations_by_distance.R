@@ -4,7 +4,9 @@
 #'
 #' @export
 
-get_station_by_distance = function(position, station_sf, n = 3) {
+get_station_by_distance = function(position, n = 3) {
+
+   station_sf = get_station_information()
 
    for (i in 1:nrow(position)) {
       # for each landslide compute the distance to each station

@@ -1,5 +1,10 @@
 #' Read the station rainfall data
 #'
+#' This function is called for each landslide. Each landslide can have a vector of stations, as returned by a
+#' \code{get_station_by_*}-function. The start date must be a vector of the same length as the \code{station}-vector.
+#' Same is true for the \code{end_date}-vector.
+#'
+#'
 #' @importFrom stringdist stringsim
 #'
 #' @param station_data_path Path to the directory containing the \code{txt} files
@@ -107,6 +112,7 @@ read_rainfall = function(station = NULL,
 
     i = 1 # dont want to change code anymore hugh...
 
+    # for each station for each landslide
     for (stat in station) {
 
       if (!stat %in% station_names) {
@@ -151,19 +157,34 @@ read_rainfall = function(station = NULL,
         # assumes that the data column is always the first column
         df[, 1] = as.Date(df[, 1])
 
-        # slice the data based on the input dates
-        df = slice_rain(df, start_date = start_date[[i]],
-                        end_date = end_date[[i]])
+        # if the date of the landslide does not correspond to the dates in the stations
+        date_unmatch = start_date[[i]] < min(df$date) || end_date[[i]] > max(df$date) || start_date[[i]] > max(df$date) || end_date[[i]] < min(df$date)
+        if(date_unmatch){
+          df = list(data_avail = FALSE,
+                          dol = start_date[[i]],
+                          start_date_station = min(df$date),
+                          end_date_station = max(df$date))
+
+        } else{
+          # slice the data based on the input dates
+          df = slice_rain(df, start_date = start_date[[i]],
+                          end_date = end_date[[i]])
+          df = list(df, data_avail = TRUE)
+        }
+
+
+
 
         # get the additional information from the excel file
         station_name_excel = correct_names[[idx]]
-        add_info = get_station_information(stat = station_name_excel)
+        add_info = get_station_information(station = station_name_excel)
         add_info[["data"]] = list(data = df)
 
         all_stations[[i]]  = add_info
         i = i + 1
       }
     }
+
 
     return(all_stations)
 
