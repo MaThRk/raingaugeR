@@ -5,16 +5,18 @@
 \title{Read the station rainfall data}
 \usage{
 read_rainfall(
-  station_data_path = "/mnt/CEPH_PROJECTS/Proslide/HourlyPrecData/Checked_HourlyRR",
   station = NULL,
-  only.names = FALSE
+  station_data_path = "/mnt/CEPH_PROJECTS/Proslide/HourlyPrecData/Checked_HourlyRR",
+  only.names = FALSE,
+  start_date = NULL,
+  end_date = NULL
 )
 }
 \arguments{
+\item{station}{If you want only the data for one station}
+
 \item{station_data_path}{Path to the directory containing the \code{txt} files
 for the rainfall data from the WISKI database}
-
-\item{station}{If you want only the data for one station}
 
 \item{only.names}{If TRUE, returns a dataframe with only the names from the stations.
 The two columns are the names from the file and the name matching the excel file.}
@@ -24,7 +26,9 @@ A list. Each element is a datafame and contains the data for that station.
 the name of each list-element is the name of the station
 }
 \description{
-Read the station rainfall data
+This function is called for each landslide. Each landslide can have a vector of stations, as returned by a
+\code{get_station_by_*}-function. The start date must be a vector of the same length as the \code{station}-vector.
+Same is true for the \code{end_date}-vector.
 }
 \examples{
 df = read_rainfall(<path_to_data>)[[1]]

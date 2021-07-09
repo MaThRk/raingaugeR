@@ -1,7 +1,7 @@
 #' Wrapper-function to extract rainfall for one point
 #'
 #'
-
+#' @export
 get_rainfall_from_gauge = function(point = NULL,
                                    date_of_landslide = NULL,
                                    days_back = 10,

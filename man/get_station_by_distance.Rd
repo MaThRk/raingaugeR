@@ -4,7 +4,7 @@
 \alias{get_station_by_distance}
 \title{Select station by distance}
 \usage{
-get_station_by_distance(position, station_sf, n = 3)
+get_station_by_distance(position, n = 3)
 }
 \description{
 Select station by distance
